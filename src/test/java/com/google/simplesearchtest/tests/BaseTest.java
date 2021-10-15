@@ -18,27 +18,30 @@ import java.io.File;
 @Testcontainers
 public class BaseTest {
 
-    @Container
-    public BrowserWebDriverContainer<?> chrome = new BrowserWebDriverContainer<>()
-            .withCapabilities(DesiredCapabilities.chrome())
-            .withRecordingMode(BrowserWebDriverContainer.VncRecordingMode.RECORD_ALL, new File(Configuration.reportsFolder));
+  @Container
+  public BrowserWebDriverContainer<?> chrome =
+      new BrowserWebDriverContainer<>()
+          .withCapabilities(DesiredCapabilities.chrome())
+          .withRecordingMode(
+              BrowserWebDriverContainer.VncRecordingMode.RECORD_FAILING,
+              new File(Configuration.reportsFolder));
 
-    @BeforeAll
-    public static void setUpAllure() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
-    }
+  @BeforeAll
+  public static void setUpAllure() {
+    SelenideLogger.addListener("allure", new AllureSelenide());
+  }
 
-    @BeforeEach
-    public void setUp() {
-        RemoteWebDriver driver = chrome.getWebDriver();
-        WebDriverRunner.setWebDriver(driver);
-        Configuration.startMaximized = true;
-    }
+  @BeforeEach
+  public void setUp() {
+    RemoteWebDriver driver = chrome.getWebDriver();
+    WebDriverRunner.setWebDriver(driver);
+    Configuration.startMaximized = true;
+  }
 
-    @AfterEach
-    public void tearDown() {
-        if (WebDriverRunner.hasWebDriverStarted()) {
-            WebDriverRunner.closeWebDriver();
-        }
+  @AfterEach
+  public void tearDown() {
+    if (WebDriverRunner.hasWebDriverStarted()) {
+      WebDriverRunner.closeWebDriver();
     }
+  }
 }

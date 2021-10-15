@@ -12,6 +12,7 @@ import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Selectors.by;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Owner("pavlo.svynarenko")
 @Feature("Search results verification")
@@ -48,13 +49,13 @@ public class SearchResultsPageTest extends  BaseTest {
 
         //then
         results.checkCalculatorIsVisible();
-
         //and
-        results.getCalcResult().equals('4');
+        assertEquals(results.getCalcResult(), "4");
+
     }
 
     @Test
-    @Description()
+    @Description("I'm feeling lucky! ;)")
     public void verifyYourLuck() {
         //when
         searchPage.feelingLuckySearch("du.co");

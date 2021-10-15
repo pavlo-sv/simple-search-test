@@ -11,22 +11,21 @@ import static com.codeborne.selenide.Selenide.open;
 @Owner("pavlo.svynarenko")
 public class SearchPageTest extends BaseTest {
 
-    private final SearchPage searchPage = new SearchPage();
+  private final SearchPage searchPage = new SearchPage();
 
-    @Feature("Home page verification")
-    @Test
-    @Description("Verify home page is properly loaded")
-    public void searchPageShouldHaveElementsLoaded() {
-        //when
-        open("https://google.com");
-        if (searchPage.isConfirmationButtonDisplayed()) {
-            searchPage.closeConfirmationDialog();
-        }
-
-        //then
-        searchPage.hasSearchInput();
-        searchPage.hasSearchButton();
-        searchPage.hasLuckyButton();
+  @Feature("Home page verification")
+  @Test
+  @Description("Verify home page is properly loaded")
+  public void searchPageShouldHaveElementsLoaded() {
+    // when
+    open("https://google.com");
+    if (searchPage.isConfirmationButtonDisplayed()) {
+      searchPage.closeConfirmationDialog();
     }
 
+    // then
+    searchPage.hasSearchInput();
+    searchPage.hasSearchButton();
+    searchPage.hasLuckyButton();
+  }
 }

@@ -10,42 +10,42 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class SearchPage {
 
-    private final SelenideElement searchInput = $(byName("q"));
-    private final SelenideElement searchButton = $(byName("btnK"));
-    private final SelenideElement luckyButton = $(byName("btnI"));
-    private final SelenideElement confirmationButton = $(byId("L2AGLb"));
+  private final SelenideElement searchInput = $(byName("q"));
+  private final SelenideElement searchButton = $(byName("btnK"));
+  private final SelenideElement luckyButton = $(byName("btnI"));
+  private final SelenideElement confirmationButton = $(byId("L2AGLb"));
 
-    public void hasSearchInput() {
-        searchInput.should(exist);
-    }
+  public void hasSearchInput() {
+    searchInput.should(exist);
+  }
 
-    public void hasSearchButton() {
-        searchButton.should(exist);
-    }
+  public void hasSearchButton() {
+    searchButton.should(exist);
+  }
 
-    public void hasLuckyButton() {
-        luckyButton.should(exist);
-    }
+  public void hasLuckyButton() {
+    luckyButton.should(exist);
+  }
 
-    public boolean isConfirmationButtonDisplayed() {
-        return confirmationButton.is(visible);
-    }
+  public boolean isConfirmationButtonDisplayed() {
+    return confirmationButton.is(visible);
+  }
 
-    public void closeConfirmationDialog() {
-        confirmationButton.click();
-    }
+  public void closeConfirmationDialog() {
+    confirmationButton.click();
+  }
 
-    public void searchWithButton(String textToSearch) {
-        searchInput.val(textToSearch);
-        searchButton.click();
-    }
+  public void searchWithButton(String textToSearch) {
+    searchInput.val(textToSearch);
+    searchButton.click();
+  }
 
-    public void searchWithEnter(String textToSearch) {
-        searchInput.val(textToSearch).pressEnter();
-    }
+  public void searchWithEnter(String textToSearch) {
+    searchInput.val(textToSearch).pressEnter();
+  }
 
-    public void feelingLuckySearch(String textToSearch) {
-        searchInput.val(textToSearch);
-        luckyButton.click();
-    }
+  public void feelingLuckySearch(String textToSearch) {
+    searchInput.val(textToSearch);
+    luckyButton.click();
+  }
 }
